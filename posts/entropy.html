@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Entropy · Physics Notes</title>
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a class="nav-title" href="../index.html">Physics Notes</a>
+    <div class="nav-links">
+      <a href="../index.html">Posts</a>
+      <a href="../about.html">About</a>
+    </div>
+  </div>
+</nav>
+
+<main class="container">
+
+  <!-- ── POST HEADER ── -->
+  <header class="post-header">
+    <p class="category">StatMech</p>
+    <h1>Entropy</h1>
+    <p class="post-meta">
+      <span>April 2026</span>
+      <span>1 min read</span>
+    </p>
+  </header>
+
+  <!-- ════════════════════════════════════════════
+       POST BODY
+
+       HOW TO ADD AN EXPANDABLE PROOF:
+       ─────────────────────────────────────────
+       1. Wrap the term/theorem in your prose with:
+              <span class="thm" data-proof="UNIQUE-ID">your term</span><span class="thm-marker">▸</span>
+
+       2. Immediately after the paragraph, add the proof block:
+              <div class="proof" id="proof-UNIQUE-ID">
+                <div class="proof-inner"><div class="proof-content">
+                  <div class="proof-label">Label <span class="close" data-close="UNIQUE-ID">close ✕</span></div>
+                  <p>Your explanation...</p>
+                </div></div>
+              </div>
+
+       Use the same UNIQUE-ID in both places. That's it!
+  ════════════════════════════════════════════ -->
+  <article class="post-body">
+
+    <p>
+      <span class="thm" data-proof="ent">Entropy never decreases.</span><span class="thm-marker">▸</span>. 
+      
+      <div class="proof" id="proof-ent">
+     <div class="proof-inner"><div class="proof-content">
+       <div class="proof-label">montonicity <span class="close" data-close="my-id">close ✕</span></div>
+       <p>We know,</p>
+       <pre>dS > 0</pre>
+     </div></div>
+   </div>
+
+
+  </article>
+</main>
+
+<footer>
+  Built with plain HTML · Hosted on GitHub Pages
+</footer>
+
+<script src="../proofs.js"></script>
+</body>
+</html>
