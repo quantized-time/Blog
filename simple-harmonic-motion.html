@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Simple Harmonic Motion · Physics Notes</title>
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a class="nav-title" href="../index.html">Physics Notes</a>
+    <div class="nav-links">
+      <a href="../index.html">Posts</a>
+      <a href="../about.html">About</a>
+    </div>
+  </div>
+</nav>
+
+<main class="container">
+
+  <!-- ── POST HEADER ── -->
+  <header class="post-header">
+    <p class="category">Mechanics</p>
+    <h1>Simple Harmonic Motion</h1>
+    <p class="post-meta">
+      <span>June 2025</span>
+      <span>15 min read</span>
+    </p>
+  </header>
+
+  <!-- ════════════════════════════════════════════
+       POST BODY
+
+       HOW TO ADD AN EXPANDABLE PROOF:
+       ─────────────────────────────────────────
+       1. Wrap the term/theorem in your prose with:
+              <span class="thm" data-proof="UNIQUE-ID">your term</span><span class="thm-marker">▸</span>
+
+       2. Immediately after the paragraph, add the proof block:
+              <div class="proof" id="proof-UNIQUE-ID">
+                <div class="proof-inner"><div class="proof-content">
+                  <div class="proof-label">Label <span class="close" data-close="UNIQUE-ID">close ✕</span></div>
+                  <p>Your explanation...</p>
+                </div></div>
+              </div>
+
+       Use the same UNIQUE-ID in both places. That's it!
+  ════════════════════════════════════════════ -->
+  <article class="post-body">
+
+    <p>
+      A mass on a spring. A pendulum. An LC circuit. On the surface these look nothing alike —
+      yet they are all described by the same equation.
+      <span class="thm" data-proof="shm-eq">The equation of simple harmonic motion is
+      <em>ẍ + ω²x = 0</em></span><span class="thm-marker">▸</span>,
+      and understanding why it keeps reappearing is one of the great unifying insights of classical physics.
+    </p>
+
+    <div class="proof" id="proof-shm-eq">
+      <div class="proof-inner"><div class="proof-content">
+        <div class="proof-label">Where does this ODE come from? <span class="close" data-close="shm-eq">close ✕</span></div>
+        <p>Start with a mass <em>m</em> on a spring with spring constant <em>k</em>.
+        Hooke's law says the restoring force is proportional to displacement: <code>F = −kx</code>.
+        Newton's second law gives <code>F = mẍ</code>. Combining:</p>
+        <pre>mẍ = −kx   ⟹   ẍ + (k/m)x = 0</pre>
+        <p>We define <code>ω² = k/m</code>, giving <code>ẍ + ω²x = 0</code>.
+        This is a linear, second-order ODE with constant coefficients.
+        Its characteristic equation is <code>r² + ω² = 0</code>, with roots <code>r = ±iω</code>.
+        By Euler's formula, the general solution is:</p>
+        <pre>x(t) = A cos(ωt) + B sin(ωt)</pre>
+        <p>where <em>A</em> and <em>B</em> are set by initial conditions (starting position and velocity).</p>
+      </div></div>
+    </div>
+
+    <h2>The frequency doesn't depend on amplitude</h2>
+
+    <p>
+      Perhaps the strangest feature of SHM is that if you pull the spring twice as far,
+      the oscillation takes exactly the same time. This <em>isochrony</em> is not obvious —
+      a longer pull means more force, but also more distance to cover.
+      <span class="thm" data-proof="isochrony">These two effects cancel exactly</span><span class="thm-marker">▸</span>,
+      and the period <em>T = 2π/ω</em> is independent of amplitude.
+    </p>
+
+    <div class="proof" id="proof-isochrony">
+      <div class="proof-inner"><div class="proof-content">
+        <div class="proof-label">Why amplitude cancels out <span class="close" data-close="isochrony">close ✕</span></div>
+        <p>Write the solution as <code>x(t) = A cos(ωt + φ)</code> for amplitude <em>A</em> and phase <em>φ</em>.
+        Substituting into <code>ẍ + ω²x = 0</code>:</p>
+        <pre>ẍ = −Aω² cos(ωt + φ) = −ω² · x(t)  ✓</pre>
+        <p>The amplitude <em>A</em> appears on both sides and cancels. The equation is satisfied for
+        <em>any</em> value of <em>A</em>. The angular frequency <code>ω = √(k/m)</code> depends only
+        on the physical properties of the spring and mass — not on how hard you push.</p>
+        <p>Contrast this with nonlinear oscillators (like a pendulum at large angles), where
+        the restoring force is no longer proportional to displacement and isochrony breaks down.</p>
+      </div></div>
+    </div>
+
+    <h2>The pendulum as an approximation</h2>
+
+    <p>
+      A pendulum of length <em>L</em> obeys <em>θ̈ + (g/L) sin θ = 0</em> — not quite SHM.
+      But for small angles,
+      <span class="thm" data-proof="small-angle">sin θ ≈ θ</span><span class="thm-marker">▸</span>,
+      linearising the equation to <em>θ̈ + (g/L)θ = 0</em>. So the pendulum becomes
+      a simple harmonic oscillator with <em>ω = √(g/L)</em>.
+    </p>
+
+    <div class="proof" id="proof-small-angle">
+      <div class="proof-inner"><div class="proof-content">
+        <div class="proof-label">The small-angle approximation <span class="close" data-close="small-angle">close ✕</span></div>
+        <p>The Taylor series of sin θ around θ = 0 is:</p>
+        <pre>sin θ = θ − θ³/6 + θ⁵/120 − ···</pre>
+        <p>For small θ (say under 15°, which is about 0.26 rad), the cubic term contributes
+        less than <code>0.26³/6 ÷ 0.26 ≈ 1%</code> of the leading term. Dropping it:
+        <code>sin θ ≈ θ</code>. The error stays below 1% for angles up to about 14°.</p>
+        <p>The approximation fails at large angles, and the period of a real pendulum grows
+        as amplitude increases — you can measure this with a careful experiment.</p>
+      </div></div>
+    </div>
+
+    <h2>Energy: an ellipse in phase space</h2>
+
+    <p>
+      At any instant, the total energy is the sum of kinetic and potential:
+      <span class="thm" data-proof="energy">E = ½mv² + ½kx²</span><span class="thm-marker">▸</span>.
+      This is conserved throughout the motion. In the phase plane — the space of
+      <em>(x, v)</em> pairs — the trajectory is an ellipse, and the ellipse is closed
+      precisely because energy is constant.
+    </p>
+
+    <div class="proof" id="proof-energy">
+      <div class="proof-inner"><div class="proof-content">
+        <div class="proof-label">Proving energy conservation <span class="close" data-close="energy">close ✕</span></div>
+        <p>Differentiate <code>E = ½mv² + ½kx²</code> with respect to time, using
+        <code>v = ẋ</code> and <code>dv/dt = ẍ</code>:</p>
+        <pre>dE/dt = mv·ẍ + kx·ẋ = ẋ(mẍ + kx)</pre>
+        <p>The equation of motion tells us <code>mẍ + kx = 0</code>, so:</p>
+        <pre>dE/dt = ẋ · 0 = 0</pre>
+        <p>Energy is exactly constant. Substituting the solution <code>x = A cos(ωt)</code>
+        and <code>v = −Aω sin(ωt)</code>:</p>
+        <pre>E = ½m(Aω)²sin²(ωt) + ½kA²cos²(ωt)
+  = ½kA²(sin²(ωt) + cos²(ωt))   [since mω² = k]
+  = ½kA²</pre>
+        <p>So the total energy is <code>½kA²</code> — proportional to the square of amplitude,
+        and independent of time.</p>
+      </div></div>
+    </div>
+
+  </article>
+</main>
+
+<footer>
+  Built with plain HTML · Hosted on GitHub Pages
+</footer>
+
+<script src="../proofs.js"></script>
+</body>
+</html>
